@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatGPT Icon Window</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Floating ChatGPT icon */
+    .chatgpt-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #10a37f;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .chatgpt-icon svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+    }
+
+    /* Iframe chat window */
+    .chatgpt-window {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 350px;
+      height: 500px;
+      border: 2px solid #10a37f;
+      border-radius: 10px;
+      display: none;
+      z-index: 9998;
+    }
+
+    .chatgpt-window iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+    }
+
+    /* For small screens */
+    @media (max-width: 500px) {
+      .chatgpt-window {
+        width: 90%;
+        height: 400px;
+        right: 5%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Icon -->
+  <div class="chatgpt-icon" onclick="toggleChatWindow()">
+    <!-- Simple ChatGPT-style icon -->
+    <svg viewBox="0 0 24 24">
+      <path d="M12 0C5.373 0 0 5.373 0 12a11.95 11.95 0 0 0 3.512 8.485A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818A9.818 9.818 0 1 1 21.818 12 9.829 9.829 0 0 1 12 21.818z"/>
+    </svg>
+  </div>
+
+  <!-- Hidden iframe window -->
+  <div class="chatgpt-window" id="chatgptWindow">
+    <iframe src="https://chat.openai.com/"></iframe>
+  </div>
+
+  <script>
+    function toggleChatWindow() {
+      const windowDiv = document.getElementById('chatgptWindow');
+      windowDiv.style.display = windowDiv.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
